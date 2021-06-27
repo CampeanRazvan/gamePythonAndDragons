@@ -85,14 +85,6 @@ class Enemy:
             print("        " + str(i) + '.', item)
             i += 1
 
-    # def choose_magic(self):
-    #     i = 1
-    #
-    #     print("\n" + "       " + Use_colors.BLUE + Use_colors.BOLD + "     MAGIC" + Use_colors.ENDC)
-    #     for spell in self.magic:
-    #         print("        " + str(i) + ".", spell.name, '(cost:', str(spell.cost) + ')')
-    #         i += 1
-
     def choose_item(self):
         i = 1
         print("\n" + Use_colors.GREEN + Use_colors.BOLD + "     ITEMS" + Use_colors.ENDC)

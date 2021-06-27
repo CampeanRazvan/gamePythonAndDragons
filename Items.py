@@ -21,25 +21,6 @@ class Item:
             self.number -= 1
 
 
-
-
-
-
-
-
-# potion = Item("Potion", "potion", "Heals 50 HP", 50)
-# hipotion = Item("HI_Potion", "potion", "Heals 100 HP", 100)
-# superpotion = Item("Super-Potion", "potion", "Heals 500 HP", 500)
-# elixer = Item("Elixer", "elixer", "Fully restore HP/MP of one party member", 9999)
-# hielixer = Item("megaElixer", "elixer", "Fully restore all party's HP/MP ", 9999)
-#
-#  player_items = [{"item": potion, "quantity": 15},
-#                         {"item": hipotion, "quantity": 5},
-#                         {"item": superpotion, "quantity": 5},
-#                         {"item": elixer, "quantity": 2},
-#                         {"item": hipotion, "quantity": 5},
-#                         {"item": grenade, "quantity": 5}]
-
 class Life_Potion(Item):
 
     def __init__(self):
