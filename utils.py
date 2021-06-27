@@ -1,6 +1,7 @@
 import winsound
 import os
 from colors import Use_colors
+import character
 
 from magic import Spell
 from Items import Item
@@ -53,13 +54,26 @@ class Utils:
 
         chosen_path = int(input("Choose your path carefully -> "))
         if chosen_path == 1:
+            Utils.village_1_art()
             Utils.village()
+            return "village"
         elif chosen_path == 2:
+            Utils.forest_art()
             Utils.forest()
+            return "forest"
         elif chosen_path == 3:
+            Utils.desert_art()
             Utils.desert()
+            land_type = Utils.terrain_type_desert()
+            return land_type
+
         else:
             print("Incorrect choice")
+
+    @staticmethod
+    def terrain_type_desert():
+        return "desert"
+
 
     @staticmethod
     def game_start():
@@ -85,6 +99,7 @@ class Utils:
     def village():
         os.system('cls')
         village_intro_message = "\t\t\tYour adventure starts in the village of Rosemill\n"
+
         print(village_intro_message)
 
         return
@@ -92,7 +107,8 @@ class Utils:
     @staticmethod
     def forest():
         os.system('cls')
-        forest_intro_message = "\t\t\tYour adventure starts in the Wolfpath forest\n"
+        forest_intro_message = "\t\t\tYour adventure starts in the Wolfspring forest\n"
+
         print(forest_intro_message)
 
         return
@@ -100,8 +116,87 @@ class Utils:
     @staticmethod
     def desert():
         os.system('cls')
-        desert_intro_message = "\t\t\tYour adventure starts in the Dead Wasteland\n"
+        desert_intro_message = "\t\t\tYour adventure starts in the Saltsea desert \n"
         print(desert_intro_message)
 
         return
+
+    @staticmethod
+    def village_1_art():
+        village_art = """ 
+        ****************************************************
+          ********       ROSEMILL VILLAGE      ***********
+        ****************************************************
+                  ~         ~~          __
+                                   T      .,,.    ~--~ ^^
+                     ^^            M 
+           _II___                [ O ]    ^^   _II__         
+          /     /V    '^         |_O_|    ^   /     /V
+         /     /  V             /  o  N      /     /  V
+        /____ /____V          II ____ N,    /____ /____V
+        |  0  |  O |      ; /  | []   |    |  0  |  O |
+        |.,.,.| [] |     :'| O | []  -|    |.,.,.| [] |
+        .,.,.,  ., ., ,.,. |__ |_[]___|,.,.,   .,.,.,  ., ., 
+           ;        .                    
+        
+        ********************************************************
+          ****************************************************
+        ********************************************************   
+            """
+        return print(village_art)
+
+
+    @staticmethod
+    def forest_art():
+
+        forest_ascii_art ="""
+        
+        ********************************************************
+          **********       WOLFSPRING FOREST        **********
+        ********************************************************  
+                                  
+                                 ,&&,                            
+                                ,&&&&,           
+                 ^..,%%%,      ,&&&&&&&, v.   
+                   ,%%%%%,    ,&&/&&&/&&,    .oo8888o.
+                 ,&%%&%&&%%,  &&&&/&&&&&&,   8888|88/8o
+                ,%&%&&|&&%%%  &&&  &&&/&&&  88 88888/88'
+                %&&/&%&/%/&%&  &%&&/ &&&    &88888 88888'
+                 %&&%/ %&%%&&    V /&&'     `88 8 `/&&'
+                 `&% |` /%&'     |.|           &|'|&'
+                     |o|         | |            | |
+                     |.|         | |            | |
+                    v,.. vV . ..v , , vVv,..,   v,_,.
+
+        ********************************************************
+          ****************************************************
+        ******************************************************** 
+        """
+        return print(forest_ascii_art)
+
+    @staticmethod
+    def desert_art():
+
+        desert_ascii_art = """
+        ********************************************************
+          **********         SALTSEA DESERT         **********
+        ******************************************************** 
+                                               
+                            .:::::.    
+                           :::::::::  
+                           ::::::::: 
+                           `:::::::`                           
+                                    
+        .,-*~'^'~*-,._                       _.,-*~'^'~*-,._
+                      '*-,._            _.,-*'               '-
+                            '*-,.__.,-*'                          
+                                                                               
+        `'`'`'`'`'`'`'`'`'`'`'`'`'`'`'`'`'`'`'`'`'`'`'`'`'`'`'` 
+        ********************************************************
+          ****************************************************
+        ********************************************************       
+           
+        """
+        return print(desert_ascii_art)
+
 

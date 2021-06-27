@@ -42,7 +42,7 @@ class Thunder(Spell):
 
     def attack_spell_thunder(self,player, enemy_1):
 
-        spell = Fire("fire")
+        spell = Thunder("fire")
 
         magic_damage = spell.generate_damage()
         print(magic_damage)
