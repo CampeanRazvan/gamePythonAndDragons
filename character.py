@@ -4,7 +4,7 @@ import magic
 
 class Player:
 
-    def __init__(self, name, life_points, mana_points, attack, defence, magic, items):
+    def __init__(self, name, life_points, mana_points, attack, defence, magic, items, chance):
         self.name = name
         self.life_points = life_points
         self.mana_points = mana_points
@@ -14,11 +14,12 @@ class Player:
         self.items = items
         self.full_life_points = life_points
         self.full_mana_points = mana_points
+        self.chance = chance
 
         self.actions = ["Attack", "Magic", "Items"]
         self.magic = ["fire", "thunder", "life"]
         self.items = ["life_potion", "mana_potion", "greek fire"]
-
+        self.location = []
 
 
 
@@ -107,24 +108,31 @@ class Player:
         2. Mana potion : Give  30 mana points  x
         3. Greek fire  : Give 120 damage       x""")
 
+    def miss_chance(self):
+        pass
+
+
 
 
 
 class Warrior(Player):
 
     def __init__(self, name):
-        super().__init__(name, 180, 50, 30, 10, "", "")
+        super().__init__(name, 180, 50, 30, 10, "", "", 5)
         self.spells = ["Warrior cry", "Our is the furry"]
         self.items_list = ["Small life potion", "large life potion", "javelin",
                                "small mana potion", "large mana potion"]
 
-
+    def warrior_in_desert(self):
+        if "desert" in self.location:
+            self.life_points = self.life_points * 4/5
+            self.attack = self.attack * 4/5
 
 
 class Ranger(Player):
 
     def __init__(self, name):
-        super().__init__(name, 160, 55, 20, 8, "", "")
+        super().__init__(name, 160, 55, 20, 8, "", "", 6)
         self.spells = ["Head Shot", "triple arrow"]
         self.items_list = ["Small life potion", "large life potion",
                                "small mana potion", "large mana potion", ]
@@ -135,7 +143,7 @@ class Ranger(Player):
 class Wizard(Player):
 
     def __init__(self, name):
-        super().__init__(name, 150, 55, 20, 8, "", "")
+        super().__init__(name, 150, 55, 20, 8, "", "", 4 )
         self.spells = ["Fire ball", "Tornado"]
         self.items_list = ["Small life potion", "large life potion",
                                "small mana potion", "large mana potion", ]

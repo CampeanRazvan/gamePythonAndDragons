@@ -9,23 +9,17 @@ import magic
 
 
 def battle_1():
-
     running = True
-
     list_of_spells = ["thunder", "fire","life"]
     list_of_items = []
-
-
 
     count_life_potion = 0
     count_mana_potion = 0
     count_greekfire_potion = 0
+
     while running:
-
         player.choose_action()
-
         print(" You are under attack , this are your option ")
-
         choice = input("    Choose action: ->")
 
         if choice == "1":
@@ -34,7 +28,6 @@ def battle_1():
             print("You attacked for", damage, "points of damage . Enemy HP:", enemy_1.show_life())
 
         elif choice == "2":
-
             player.choose_magic()
             magic_choice = int(input("Choose magic:"))
 
@@ -47,18 +40,18 @@ def battle_1():
             elif magic_choice == 3:
                 magic.Life.life_spell("life",player ,enemy_1)
 
-
         elif choice == "3":
             player.choose_item()
             item_choice = int(input("Chose item ->"))
 
             if item_choice == 1:
                 item_life_potion = Items.Life_Potion()
-
                 number_items = item_life_potion.number
+
                 if number_items <= count_life_potion:
                     print(Use_colors.RED + "\n" + "None left..." + Use_colors.ENDC)
                     break
+
                 print(number_items)
                 count_life_potion += 1
                 player.heal(item_life_potion.action)
@@ -114,7 +107,29 @@ if player_choice == 1:
     player_name = input("Chose a name for your hero ->")
     player = character.Warrior(player_name)
     player.print_stats()
-    utils.Utils.world_intro()
+
+    terrain = utils.Utils.world_intro()
+    if terrain == "desert":
+        print(Use_colors.RED + """
+        You have not made the wisest decision , you are a warrior 
+        with heavy armor and weapons in the desert , under the scorching sun...
+        your character suffers penalties for attack and life points 
+           
+             """ + Use_colors.ENDC)
+        player.life_points = player.life_points * 0.8
+        player.attack = player.attack * 0.8
+        player.print_stats()
+    elif terrain == "village":
+        print(Use_colors.GREEN + """
+               You have made the wisest decision , you are a warrior 
+               with heavy armor and weapons in a town , here are small distances...
+               your character have bonuses for attack and life points 
+
+                    """ + Use_colors.ENDC)
+        player.life_points = player.life_points * 1.2
+        player.attack = player.attack * 1.2
+        player.print_stats()
+
     player.choose_magic()
 
     enemy_1 = enemy.Enemy.random_enemy()
@@ -125,7 +140,28 @@ elif player_choice == 2:
     player_name = input("Chose a name for your hero ->")
     player = character.Wizard(player_name)
     player.print_stats()
-    utils.Utils.world_intro()
+    terrain = utils.Utils.world_intro()
+    if terrain == "forest":
+        print(Use_colors.RED + """
+           You have not made the wisest decision , you are a wizard
+            in a forest  , you can not see far ...
+           your character suffers penalties for attack and life points 
+
+                """ + Use_colors.ENDC)
+        player.life_points = player.life_points * 0.8
+        player.attack = player.attack * 0.8
+        player.print_stats()
+    elif terrain == "desert":
+        print(Use_colors.GREEN + """
+                  You have made the wisest decision , you are a wizard
+                   in desert , here are large distances...
+                  your character have bonuses for attack and life points 
+
+                       """ + Use_colors.ENDC)
+        player.life_points = player.life_points * 1.2
+        player.attack = player.attack * 1.2
+        player.print_stats()
+
 
     enemy_1 = enemy.Enemy.random_enemy()
     print(enemy_1.get_stats())
@@ -135,7 +171,27 @@ elif player_choice == 3:
     player_name = input("Chose a name for your hero ->")
     player = character.Ranger(player_name)
     player.print_stats()
-    utils.Utils.world_intro()
+    terrain = utils.Utils.world_intro()
+    if terrain == "village":
+        print(Use_colors.RED + """
+           You have not made the wisest decision , you are a ranger 
+           in a village , small spaces and close combat ...
+           your character suffers penalties for attack and life points 
+
+                """ + Use_colors.ENDC)
+        player.life_points = player.life_points * 0.8
+        player.attack = player.attack * 0.8
+        player.print_stats()
+    elif terrain == "forest":
+        print(Use_colors.GREEN + """
+                  You have made the wisest decision , you are a ranger 
+                  in a forest , here you are at home...
+                  your character have bonuses for attack and life points 
+
+                       """ + Use_colors.ENDC)
+        player.life_points = player.life_points * 1.2
+        player.attack = player.attack * 1.2
+        player.print_stats()
 
     enemy_1 = enemy.Enemy.random_enemy()
     print(enemy_1.get_stats())

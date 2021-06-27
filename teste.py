@@ -32,3 +32,17 @@ player_items = [{"item": potion, "quantity": 15},
                 {"item": elixer, "quantity": 2},
                 {"item": hipotion, "quantity": 5},
                 {"item": grenade, "quantity": 5}]
+
+
+
+""" ~         ~~          __
+        T      .,,.    ~--~ ^^
+ ^^    / \                    ~
+      [ O ]    ^^    _II__
+      |___|         /     /\
+__ _ /     \ ______/     /  \_,__
+    II ____ \,-- :/____ /____\,
+;  /  \      |    |[]   |  O |
+:' |  | []  -|    |.,.,.| [] |
+   |[]|,.,.,.\,    -,.    |
+  ..    ..-     ;        .     """
