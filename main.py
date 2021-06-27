@@ -23,9 +23,16 @@ def battle_1():
         choice = input("    Choose action: ->")
 
         if choice == "1":
-            damage = player.generate_damage()
-            enemy_1.take_damage(damage)
-            print("You attacked for", damage, "points of damage . Enemy HP:", enemy_1.show_life())
+            player_miss_chance = player.miss_chance()
+            if player_miss_chance != 0:
+
+                damage = player.generate_damage()
+                enemy_1.take_damage(damage)
+                print("You attacked for", damage, "points of damage . Enemy HP:", enemy_1.show_life())
+            else:
+                print("You miss")
+                damage = 0
+                enemy_1.take_damage(damage)
 
         elif choice == "2":
             player.choose_magic()
@@ -118,16 +125,20 @@ if player_choice == 1:
              """ + Use_colors.ENDC)
         player.life_points = player.life_points * 0.8
         player.attack = player.attack * 0.8
+        player.chance -= 3
+
         player.print_stats()
     elif terrain == "village":
         print(Use_colors.GREEN + """
-               You have made the wisest decision , you are a warrior 
-               with heavy armor and weapons in a town , here are small distances...
-               your character have bonuses for attack and life points 
-
+        You have made the wisest decision , you are a warrior 
+        with heavy armor and weapons in a town , here are small distances...
+        your character have bonuses for attack and life points 
+        
                     """ + Use_colors.ENDC)
         player.life_points = player.life_points * 1.2
         player.attack = player.attack * 1.2
+
+        player.chance += 1
         player.print_stats()
 
     player.choose_magic()
@@ -150,6 +161,7 @@ elif player_choice == 2:
                 """ + Use_colors.ENDC)
         player.life_points = player.life_points * 0.8
         player.attack = player.attack * 0.8
+        player.chance -= 1
         player.print_stats()
     elif terrain == "desert":
         print(Use_colors.GREEN + """
@@ -160,6 +172,7 @@ elif player_choice == 2:
                        """ + Use_colors.ENDC)
         player.life_points = player.life_points * 1.2
         player.attack = player.attack * 1.2
+        player.chance += 1
         player.print_stats()
 
 

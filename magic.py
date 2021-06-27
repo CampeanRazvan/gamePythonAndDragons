@@ -23,18 +23,6 @@ class Spell:
         high = self.damage + 15
         return random.randrange(low,high)
 
-    # fire = Spell("Fire", 10, 100, "black")
-    # thunder = Spell("Thunder", 10, 100, "black")
-    # blizzard = Spell("Blizzard", 10, 100, "black")
-    # meteor = Spell("Meteor", 20, 200, "black")
-    # quake = Spell("Quake", 14, 40, "black")
-    #
-    # # create White Magic
-    # cure = Spell("Cure", 12, 120, "white")
-    # cura = Spell("Cura", 18, 200, "white")
-
-
-
 
 class Thunder(Spell):
     def __init__(self, name):
@@ -106,10 +94,7 @@ class Life(Spell):
         curent_mana = player.get_mana()
         if spell.cost > curent_mana:
             print(Use_colors.RED + "\n Not enough mana" + Use_colors.ENDC)
-
         player.reduce_mana(spell.cost)
-
-
         player.heal(magic_damage)
         print(Use_colors.BLUE + "\n" + spell.name + " heals for", str(magic_damage),
                   "HP." + Use_colors.ENDC)
